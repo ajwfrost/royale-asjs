@@ -18,8 +18,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 package org.apache.royale.html.beads
 {
+    COMPILE::SWF
+    {
     import flash.display.Graphics;
     import flash.display.Sprite;
+    }
+    COMPILE::JS
+    {
+    import org.apache.royale.core.HTMLElementWrapper;
+    }
     
     import org.apache.royale.core.IBead;
     import org.apache.royale.core.IBeadView;
@@ -194,6 +201,8 @@ package org.apache.royale.html.beads
         
 		protected function changeHandler(event:Event):void
 		{
+            COMPILE::SWF
+            {
             var g:Graphics = Sprite(host).graphics as Graphics;
             var w:Number = host.width;
             var h:Number = host.height;
@@ -207,6 +216,17 @@ package org.apache.royale.html.beads
             else
                 g.drawRoundRect(0, 0, w, h, borderRadius * 2);
             g.endFill();
+            }
+            COMPILE::JS
+            {
+                var htmlWrapper : HTMLElementWrapper = this._strand as HTMLElementWrapper;
+                // set background using RGBA so we can use opacity
+                var r : uint = (_backgroundColor & 0xFF0000) >> 16;
+                var g : uint = (_backgroundColor & 0x00FF00) >>  8;
+                var b : uint = (_backgroundColor & 0x0000FF) >>  0;
+                htmlWrapper.element.style["background-color"] = "rgba(" + r + ", " + g + ", " + b + ", " + _opacity + ")";
+                htmlWrapper.element.style["border-radius"] = this._borderRadius + "px";
+            }
 		}
 	}
 }

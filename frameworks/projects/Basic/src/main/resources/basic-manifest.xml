@@ -108,6 +108,8 @@
     <component id="ApplicationParameters" class="org.apache.royale.html.beads.ApplicationParametersBead"/>
     <component id="ApplicationParametersCaseInsensitive" class="org.apache.royale.html.beads.ApplicationParametersCaseInsensitiveBead"/>
     <component id="IEEventAdapter" class="org.apache.royale.html.beads.IEEventAdapterBead"/>
+    <component id="SolidBackgroundBead" class="org.apache.royale.html.beads.SolidBackgroundBead" />
+    <component id="SingleLineBorderBead" class="org.apache.royale.html.beads.SingleLineBorderBead" />
 
     <component id="SimpleAlert" class="org.apache.royale.html.SimpleAlert"/>
     <component id="Alert" class="org.apache.royale.html.Alert"/>
