@@ -270,6 +270,7 @@ internal class BasicClasses
 		import org.apache.royale.core.UIElement; UIElement;
 	}
     import org.apache.royale.core.SimpleApplication; SimpleApplication;
+    import org.apache.royale.core.PopUpManager; PopUpManager; 
 	import org.apache.royale.svg.GraphicContainer; GraphicContainer;
 	import org.apache.royale.svg.DOMWrapper; DOMWrapper;
 
