@@ -57,6 +57,7 @@
     <component id="Group" class="org.apache.royale.html.Group"/>
     <component id="HGroup" class="org.apache.royale.html.HGroup"/>
     <component id="VGroup" class="org.apache.royale.html.VGroup"/>
+    <component id="ViewStack" class="org.apache.royale.html.ViewStack"/>
     <component id="Accordion" class="org.apache.royale.html.Accordion"/>
     <component id="Form" class="org.apache.royale.html.Form"/>
     <component id="HContainer" class="org.apache.royale.html.HContainer"/>
