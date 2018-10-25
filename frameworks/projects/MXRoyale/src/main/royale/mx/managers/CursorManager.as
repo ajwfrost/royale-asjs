@@ -387,10 +387,19 @@ public class CursorManager
      *  @playerversion AIR 1.1
      *  @productversion Royale 0.9.3
      */
-    /* public static function removeAllCursors():void
+    public static function removeAllCursors():void
     {
-        impl.removeAllCursors();
-    } */
+        // ajwfrost: for now, just reset to default rather than using the (not-yet-implemented) "impl" class...
+        COMPILE::JS
+        {
+            trace("removeAllCursors: Current cursor = " + document.body.style.cursor);
+            document.body.style.cursor = "auto";
+        }
+        COMPILE::SWF
+        {
+            impl.removeAllCursors();
+        }
+    }
 
     /**
      *  Displays the busy cursor.
@@ -406,11 +415,20 @@ public class CursorManager
      *  @playerversion AIR 1.1
      *  @productversion Royale 0.9.3
      */
-    /* public static function setBusyCursor():void 
+    public static function setBusyCursor():void 
     {
-        impl.setBusyCursor();
-    } */
-
+        // ajwfrost: for now, just set the busy cursor rather than using the (not-yet-implemented) "impl" class...
+        COMPILE::JS
+        {
+            trace("setBusyCursor: Current cursor = " + document.body.style.cursor);
+            document.body.style.cursor = "progress";
+        }
+        COMPILE::SWF
+        {
+            impl.setBusyCursor();
+        }
+    }
+    
     /**
      *  Removes the busy cursor from the cursor list.
      *  If other busy cursor requests are still active in the cursor list,
@@ -425,7 +443,16 @@ public class CursorManager
      */
     public static function removeBusyCursor():void 
     {
-        impl.removeBusyCursor();
+        // ajwfrost: for now, just remove the busy cursor rather than using the (not-yet-implemented) "impl" class...
+        COMPILE::JS
+        {
+            trace("removeBusyCursor: Current cursor = " + document.body.style.cursor);
+            document.body.style.cursor = "auto";
+        }
+        COMPILE::SWF
+        {
+            impl.removeBusyCursor();
+        }
     }
             
     
