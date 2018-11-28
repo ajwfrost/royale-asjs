@@ -93,7 +93,7 @@ public class StringValidator extends Validator
         var results:Array = [];
         
         // Resource-backed properties of the validator.
-       /*  var maxLength:Number = Number(validator.maxLength);
+        var maxLength:Number = Number(validator.maxLength);
         var minLength:Number = Number(validator.minLength);
 
         var val:String = value != null ? String(value) : "";
@@ -112,7 +112,7 @@ public class StringValidator extends Validator
                 true, baseField, "tooShort",
                 StringUtil.substitute(validator.tooShortError, minLength)));
             return results;
-        } */
+        }
 
         return results;
     }
@@ -180,8 +180,12 @@ public class StringValidator extends Validator
      */
     public function set maxLength(value:Object):void
     {
-       /*  maxLengthOverride = value;
-
+        maxLengthOverride = value;
+        if (value != null)
+        {
+            _maxLength = Number(value);
+        }
+        /*
         _maxLength = value != null ?
                      Number(value) :
                      resourceManager.getNumber(
@@ -226,8 +230,12 @@ public class StringValidator extends Validator
      */
     public function set minLength(value:Object):void
     {
-       /*  minLengthOverride = value;
-
+        minLengthOverride = value;
+        if (value != null)
+        {
+            _minLength = value;
+        }
+        /*
         _minLength = value != null ?
                      Number(value) :
                      resourceManager.getNumber(
@@ -253,7 +261,7 @@ public class StringValidator extends Validator
     /**
      *  @private
      */
-    //private var tooLongErrorOverride:String;
+    private var tooLongErrorOverride:String;
     
     //[Inspectable(category="Errors", defaultValue="null")]
 
@@ -278,7 +286,7 @@ public class StringValidator extends Validator
      */
     public function set tooLongError(value:String):void
     {
-        //tooLongErrorOverride = value;
+        tooLongErrorOverride = value;
 
         _tooLongError = value != null ?
                         value :
@@ -299,7 +307,7 @@ public class StringValidator extends Validator
     /**
      *  @private
      */
-    //private var tooShortErrorOverride:String;
+    private var tooShortErrorOverride:String;
     
     //[Inspectable(category="Errors", defaultValue="null")]
 
@@ -324,7 +332,7 @@ public class StringValidator extends Validator
      */
     public function set tooShortError(value:String):void
     {
-        //tooShortErrorOverride = value;
+        tooShortErrorOverride = value;
 
         _tooShortError = value != null ?
                          value :
@@ -370,7 +378,7 @@ public class StringValidator extends Validator
      *  @playerversion AIR 1.1
      *  @productversion Flex 3
      */
-    /* override protected function doValidation(value:Object):Array
+    override protected function doValidation(value:Object):Array
     {
         var results:Array = super.doValidation(value);
         
@@ -381,7 +389,7 @@ public class StringValidator extends Validator
             return results;
         else
             return StringValidator.validateString(this, value, null);
-    } */
+    }
 }
 
 }

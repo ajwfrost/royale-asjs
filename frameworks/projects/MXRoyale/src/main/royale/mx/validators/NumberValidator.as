@@ -827,7 +827,9 @@ public class NumberValidator extends Validator
 	//					   resourceManager.getString(
 	//					       "validators", "separationError");
 	}
-    
+
+    // validation strings
+    public var invalidFormatCharsError : String = "One of the formatting parameters is invalid.";
  }
 
 }
