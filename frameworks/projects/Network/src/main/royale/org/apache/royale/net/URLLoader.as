@@ -29,7 +29,7 @@ package org.apache.royale.net
     }
     COMPILE::JS
     {
-        import org.apache.royale.events.ValueEvent;
+        import org.apache.royale.net.events.HTTPStatusEvent;
     }
     
     import org.apache.royale.events.DetailEvent;
@@ -192,21 +192,28 @@ package org.apache.royale.net
                     }
                 }
                 
-                /*
-                if (request.method != HTTPConstants.GET &&
-                    !sawContentType && contentData) {
-                    element.setRequestHeader(
-                        HTTPHeader.CONTENT_TYPE, _contentType);
+                var dataToSend : Object = null;
+
+                // if we are doing a post (or any non-GET) and we have data,
+                // then set this up; we also need to add the content type if it wasn't already set..
+                if ( (request.method != HTTPConstants.GET) && (request.data != null) )
+                {
+                    if (!sawContentType)
+                    {
+                        element.setRequestHeader(HTTPHeader.CONTENT_TYPE, request.contentType);
+                    }
+                    if (request.data is BinaryData)
+                    {
+                        dataToSend = request.data.array;
+                    }
+                    else if (request.data is String)
+                    {
+                        dataToSend = request.data;
+                    }
                 }
-                */
-                /*
-                if (contentData) {
-                    element.send(contentData);
-                } else {*/
-                    element.send();
-                /*
-                }
-                */
+
+                // send the request (data is null if no request body)
+                element.send(dataToSend);
             }
             
             dispatchEvent(new Event("postSend"));
@@ -270,7 +277,7 @@ package org.apache.royale.net
             var element:XMLHttpRequest = this.element as XMLHttpRequest;
             if (element.readyState == 2) {
                 dispatchEvent(HTTPConstants.RESPONSE_STATUS);
-                dispatchEvent( new ValueEvent(HTTPConstants.STATUS, element.status) );
+                dispatchEvent( new HTTPStatusEvent(element.status) );
             } else if (element.readyState == 4) {
                 if (element.status >= 400) // client error or server error
                 {
